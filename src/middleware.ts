@@ -18,7 +18,6 @@ export async function middleware(request: NextRequest) {
           return request.cookies.get(name)?.value
         },
         set(name: string, value: string, options: CookieOptions) {
-          // If the cookie is set, update the request cookies and response cookies
           request.cookies.set({ name, value, ...options })
           response = NextResponse.next({
             request: { headers: request.headers },
@@ -26,7 +25,6 @@ export async function middleware(request: NextRequest) {
           response.cookies.set({ name, value, ...options })
         },
         remove(name: string, options: CookieOptions) {
-          // If the cookie is removed, update the request cookies and response cookies
           request.cookies.set({ name, value: '', ...options })
           response = NextResponse.next({
             request: { headers: request.headers },
@@ -45,12 +43,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
     '/((?!_next/static|_next/image|favicon.ico).*)',
   ],
 }
