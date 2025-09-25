@@ -1,0 +1,155 @@
+
+.container {
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.75rem;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detailsGrid p {
+  font-size: 1.1rem;
+  background-color: var(--color-background);
+  padding: 0.75rem;
+  border-radius: calc(var(--border-radius) / 2);
+}
+
+.detailsGrid strong {
+  color: #495057;
+  margin-right: 0.5rem;
+}
+
+.completed,
+.pending {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.completed {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.pending {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+.error {
+  color: #842029;
+  background-color: #f8d7da;
+  padding: 1rem;
+  border: 1px solid #f5c2c7;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.backButton {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.backButton:hover {
+  background-color: var(--color-primary-hover);
+}
+
+
+.actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.actions button, .actions a {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  text-decoration: none; 
+}
+
+.backButton {
+  margin-right: auto; /* Pushes other buttons to the right */
+  background-color: #6c757d;
+  color: white;
+}
+.backButton:hover {
+  background-color: #5a6268;
+}
+
+.editButton, .saveButton {
+  background-color: #ffc107; 
+  color: #212529;
+}
+.editButton:hover, .saveButton:hover {
+  background-color: #e0a800;
+}
+
+.deleteButton {
+  background-color: #dc3545; 
+  color: white;
+}
+.deleteButton:hover {
+  background-color: #bb2d3b;
+}
+
+.actions button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Styles for edit mode */
+.editForm {
+  margin-bottom: 2rem;
+}
+
+.editInput {
+  width: 100%;
+  font-size: 1.75rem;
+  padding: 0.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.editCheckboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.editCheckboxLabel input {
+  width: 1.2rem;
+  height: 1.2rem;
+}
