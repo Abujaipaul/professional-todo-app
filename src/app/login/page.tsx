@@ -1,4 +1,4 @@
-// src/app/login/page.tsx
+
 'use client'
 
 import { createClient } from '@/lib/supabase/client'
@@ -12,8 +12,8 @@ export default function LoginPage() {
   const router = useRouter()
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_IN') {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
         router.refresh()
         router.push('/todos')
       }
@@ -22,13 +22,8 @@ export default function LoginPage() {
   }, [supabase, router])
 
   return (
-    <div style={{ maxWidth: '420px', margin: '96px auto', padding: '2rem', border: '1px solid var(--color-border)', borderRadius: 'var(--border-radius)', boxShadow: 'var(--shadow-md)' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--color-primary)' }}>Welcome</h1>
-      <Auth
-        supabaseClient={supabase}
-        appearance={{ theme: ThemeSupa }}
-        providers={[]} // Empty array defaults to Email/Password
-      />
+    <div style={{ maxWidth: '420px', margin: '96px auto' }}>
+      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
     </div>
   )
 }
