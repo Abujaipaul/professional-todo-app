@@ -1,11 +1,14 @@
 // src/components/AuthButton.tsx
-import { createClient } from '@/lib/supabase/server'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { logout } from '@/app/auth/actions'
 import styles from './AuthButton.module.css'
+import { Database } from '@/types/supabase'
 
 export default async function AuthButton() {
-  const supabase = createClient()
+   const cookieStore = cookies()
+  const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
   const { data: { user } } = await supabase.auth.getUser()
 
   return user ? (

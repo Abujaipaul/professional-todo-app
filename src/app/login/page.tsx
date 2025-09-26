@@ -1,24 +1,23 @@
 // src/app/login/page.tsx
 'use client'
-import { createClient } from '@/lib/supabase/client'
+import { supabase } from '@/lib/supabase'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function LoginPage() {
-  const supabase = createClient()
   const router = useRouter()
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN') {
         router.refresh()
         router.push('/todos')
       }
     })
     return () => subscription.unsubscribe()
-  }, [supabase, router])
+  }, [router])
 
   return (
     <div style={{ maxWidth: '420px', margin: '96px auto' }}>
