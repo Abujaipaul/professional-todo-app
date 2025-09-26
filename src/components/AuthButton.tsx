@@ -1,4 +1,4 @@
-
+// src/components/AuthButton.tsx
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { logout } from '@/app/auth/actions'
@@ -12,14 +12,10 @@ export default async function AuthButton() {
     <div className={styles.container}>
       <span className={styles.emailText}>Hey, {user.email}</span>
       <form action={logout}>
-        <button className={styles.logoutButton}>
-          Logout
-        </button>
+        <button className={styles.logoutButton}>Logout</button>
       </form>
     </div>
   ) : (
-    <Link href="/login" className={styles.loginButton}>
-      Login
-    </Link>
+    <Link href="/login" className={styles.loginButton}>Login</Link>
   )
 }

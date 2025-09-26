@@ -1,6 +1,5 @@
-
+// src/app/login/page.tsx
 'use client'
-
 import { createClient } from '@/lib/supabase/client'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -23,7 +22,7 @@ export default function LoginPage() {
 
   return (
     <div style={{ maxWidth: '420px', margin: '96px auto' }}>
-      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
+      <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} providers={[]} />
     </div>
   )
 }
